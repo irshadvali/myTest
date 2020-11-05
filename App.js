@@ -2,8 +2,7 @@ import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from './src/screens/Home';
-import ImageListContainer from './src/containers/ImageListContainer';
+import ChartScreenContainer from './src/containers/ChartScreenContainer';
 import AllBillsConatiner from './src/containers/AllBillsConatiner';
 import configureStore from './configStore';
 import {Provider} from 'react-redux';
@@ -32,7 +31,7 @@ export default class App extends Component {
               component={AllBillsConatiner}
               options={{title: 'AllBillsList'}}
             />
-            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="ChartScreen" component={ChartScreenContainer} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

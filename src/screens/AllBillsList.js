@@ -35,7 +35,7 @@ class AllBillsList extends Component {
   }
 
   componentDidMount() {
-     console.log('============', moment('01-18-2020').format('DD MMM YYYY'));
+    console.log('============', moment('01-18-2020').format('DD MMM YYYY'));
     this.props.getAllBills(this.state.filterName);
   }
   setCategoryValue = (val) => {
@@ -60,6 +60,8 @@ class AllBillsList extends Component {
   };
 
   sendItemData = () => {
+    let initialValue = 0;
+    // console.log('==================in initialValue=', initialValue);
     if (
       this.state.description.length > 0 &&
       this.state.category.length > 0 &&
@@ -70,11 +72,33 @@ class AllBillsList extends Component {
           id: Math.floor(Math.random() * 1000) + 1,
           description: this.state.description,
           category: this.state.category,
-          amount: this.state.amount,
+          amount: parseInt(this.state.amount, 10),
           date: this.state.date,
         },
       ];
-      this.props.addNewItem(newItem, this.state.filterName);
+      let allData = [...this.props.billsData, ...newItem];
+      //moment('10-20-2010').isSame('10-21-2010','month');
+      //word.date === this.state.date
+      //moment(word.date).isSame(this.state.date, 'month') === true
+      const result = allData.filter(
+        (word) => moment(word.date).isSame(this.state.date, 'month') === true,
+      );
+      // console.log(this.state.date, '==================in result=', result);
+      let amountForMonth = result.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.amount,
+        initialValue,
+      );
+      //  console.log('==================in 4=', amountForMonth);
+      if (amountForMonth > 50000) {
+        Alert.alert(
+          `For a month amount should not above 50000, ${
+            amountForMonth - 50000
+          } amount is more. `,
+        );
+      } else {
+        this.props.addNewItem(newItem, this.state.filterName, this.state.date);
+      }
+
       this.setState({
         description: '',
         category: '',
@@ -135,6 +159,14 @@ class AllBillsList extends Component {
                 this.addItem();
               }}>
               <Text style={styles.buttonTex}>Add Item</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.buttonStyle}
+              onPress={() => {
+                // Alert.alert('=======================');
+                this.props.navigation.navigate('ChartScreen', {});
+              }}>
+              <Text style={styles.buttonTex}>Chart</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -349,14 +381,14 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginHorizontal: 10,
+    marginHorizontal: 5,
   },
   buttonTex: {
     fontSize: 15,
     color: '#ffffff',
   },
   buttonStyle: {
-    width: 150,
+    width: 125,
     height: 50,
     backgroundColor: '#1A237E',
     alignItems: 'center',

@@ -17,8 +17,8 @@ const mapDispatchToProps = (dispatch) => {
     getAllBills: (filterBy) => {
       dispatch(getAllBills(filterBy));
     },
-    addNewItem: (newItemData, filterName) => {
-      dispatch(addNewItem(newItemData, filterName));
+    addNewItem: (newItemData, filterName, billDate) => {
+      dispatch(addNewItem(newItemData, filterName, billDate));
     },
     sortedBy: (filterName) => {
       dispatch(sortedBy(filterName));

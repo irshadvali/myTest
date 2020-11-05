@@ -1,6 +1,7 @@
 import {SUCCESS, REQUESTING, ERROR} from './constants.action';
 import {dataResult} from '../utils/dataResult';
 import _ from 'lodash';
+import moment from 'moment';
 export const GET_ALL_BILLS_REQUEST = 'GET_ALL_BILLS_REQUEST';
 export const GET_ALL_BILLS_SUCCESS = 'GET_ALL_BILLS_SUCCESS';
 export const GET_ALL_BILLS_FAILURE = 'GET_ALL_BILLS_FAILURE';
@@ -71,14 +72,24 @@ export function addBillsFailure(error) {
     error,
   };
 }
-export function addNewItem(newData, filterBy) {
+export function addNewItem(newData, filterBy, billDate) {
   return async (dispatch, getState, api) => {
     dispatch(addBillsRequest());
-    console.log(filterBy, '==============action=', [
-      ...getState().allbills.billsData,
-      ...newData,
-    ]);
     const resultJson = [...getState().allbills.billsData, ...newData];
+
+    // const result = resultJson.filter((word) => word.date === billDate);
+    // //  console.log(billDate, '=========================in action=', result);
+    // //  console.log(billDate, '=========================in action=', resultJson);
+    // // let maxCallback = ( acc, cur ) => {return {   acc.amount+cur.amount }};
+    // let totalAmount = (accumulator, currentValue) => {
+    //   // console.log('==============in=', accumulator.amount, currentValue.amount);
+    //   return accumulator.amount + currentValue.amount;
+    // };
+    // console.log(
+    //   billDate,
+    //   '=========================in action totalAmount=',
+    //   result.reduce(totalAmount),
+    // );
     let filterData = _.sortBy(resultJson, [`${filterBy}`]);
     try {
       dispatch(addBillsSuccess(filterData));
@@ -119,6 +130,42 @@ export function sortedBy(filterBy) {
       dispatch(filterSuccess(filterData));
     } catch (e) {
       dispatch(filterFailure(e.message));
+    }
+  };
+}
+
+export function getAllBillsByYear(year) {
+  console.log('================year=', year);
+  return async (dispatch, getState, api) => {
+    dispatch(filterRequest());
+    const resultJson = getState().allbills.billsData;
+    try {
+      const result = resultJson.filter(
+        (word) => moment(word.date).isSame(year, 'year') === true,
+      );
+      console.log(this.state.date, '==================in result=', result);
+      const resultJan = result.filter(
+        (word) => moment(word.date).isSame('01', 'month') === true,
+      );
+      console.log(
+        this.state.date,
+        '==================in resultJan=',
+        resultJan,
+      );
+      let initialValueJan = 0;
+      let amountForMonthJan = resultJan.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.amount,
+        initialValueJan,
+      );
+      console.log('================jan=', amountForMonthJan);
+      // for (let i = 0; i <= result.length; i++) {
+      //   let janData=
+
+      // }
+      console.log(year, '============y2=', result);
+      //dispatch(filterSuccess(filterData));
+    } catch (e) {
+      //dispatch(filterFailure(e.message));
     }
   };
 }
