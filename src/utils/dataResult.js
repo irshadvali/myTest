@@ -50,5 +50,33 @@ export const dataResult = {
       amount: 320,
       date: '01-14-2020',
     },
+    {
+      id: 8,
+      description: 'Laundry',
+      category: 'Personal Care',
+      amount: 6000,
+      date: '01-14-2021',
+    },
+    {
+      id: 9,
+      description: 'Two Amozon Alex',
+      category: 'Two Personal Care',
+      amount: 400,
+      date: '02-14-2021',
+    },
+    {
+      id: 10,
+      description: 'two Laundry',
+      category: 'two Personal Care',
+      amount: 600,
+      date: '09-14-2021',
+    },
+    {
+      id: 11,
+      description: 'Bike',
+      category: 'Bike Wash',
+      amount: 700,
+      date: '12-14-2021',
+    },
   ],
 };

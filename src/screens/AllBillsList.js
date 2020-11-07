@@ -214,8 +214,8 @@ class AllBillsList extends Component {
                 mode="date"
                 placeholder="select date"
                 format="MM-DD-YYYY"
-                minDate="01-01-2000"
-                maxDate="01-01-2100"
+                minDate="01-01-2020"
+                maxDate="12-31-2021"
                 confirmBtnText="Confirm"
                 cancelBtnText="Cancel"
                 customStyles={{

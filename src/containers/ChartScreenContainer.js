@@ -3,12 +3,13 @@ import ChartScreen from '../screens/ChartScreen';
 import {getAllBillsByYear} from '../actions/allbills.action';
 
 const mapStateToProps = (state) => {
+  console.log('=============container==', state.allbills.graphData);
   return {
-    billsData: state.allbills.billsData,
-    getBillLoading: state.allbills.getBillLoading,
-    getBillError: state.allbills.getBillError,
-    getBillStatus: state.allbills.getBillStatus,
-    getBillType: state.allbills.getBillType,
+    graphData: state.allbills.graphData,
+    graphLoading: state.allbills.graphLoading,
+    graphError: state.allbills.graphError,
+    graphStatus: state.allbills.graphStatus,
+    graphType: state.allbills.graphType,
   };
 };
 

@@ -1,9 +1,17 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, Dimensions, Image} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import {LineChart} from 'react-native-chart-kit';
 const {width, height} = Dimensions.get('window');
+
 //const screenWidth = Dimensions.get("window").width;
 const data = {
   labels: [
@@ -63,32 +71,57 @@ class ChartScreen extends Component {
 
   componentDidMount() {
     this.props.getAllBillsByYear('2020');
-    console.log('==================ChartScreen=', this.props.billsData);
   }
+
   render() {
     return (
-      <View>
-        <LineChart
-          data={data}
-          width={width}
-          height={height - 100}
-          verticalLabelRotation={60}
-          chartConfig={chartConfig}
-          bezier
-        />
+      <View style={{flex: 1, alignItems: 'center'}}>
+        <View
+          style={{
+            height: 50,
+            width: '100%',
+            flexDirection: 'row',
+            flex: 1,
+          }}>
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            onPress={() => {
+              this.props.getAllBillsByYear('2020');
+            }}>
+            <Text style={styles.buttonTex}>2020</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            onPress={() => {
+              this.props.getAllBillsByYear('2021');
+            }}>
+            <Text style={styles.buttonTex}>2021</Text>
+          </TouchableOpacity>
+        </View>
+        {this.props.graphData ? (
+          <LineChart
+            data={this.props.graphData}
+            width={width}
+            height={height - 200}
+            verticalLabelRotation={60}
+            chartConfig={chartConfig}
+            bezier
+          />
+        ) : (
+          <Text>llll</Text>
+        )}
       </View>
     );
   }
 }
 export default ChartScreen;
 ChartScreen.propTpes = {
-  getAllBills: PropTypes.func,
-  billsData: PropTypes.any,
-  getBillLoading: PropTypes.bool,
-  getBillError: PropTypes.string,
-  getBillStatus: PropTypes.string,
-  getBillType: PropTypes.string,
-  addNewItem: PropTypes.func,
+  graphData: PropTypes.any,
+  graphLoading: PropTypes.bool,
+  graphError: PropTypes.string,
+  graphStatus: PropTypes.string,
+  graphType: PropTypes.string,
+
   getAllBillsByYear: PropTypes.func,
 };
 
@@ -100,5 +133,31 @@ const styles = StyleSheet.create({
   textSpinet: {
     fontSize: 15,
     padding: 10,
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
+  buttonStyle: {
+    flex: 1,
+    height: 50,
+    backgroundColor: '#1A237E',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 5,
+  },
+  buttonView: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: 5,
+  },
+  buttonTex: {
+    fontSize: 15,
+    color: '#ffffff',
   },
 });
