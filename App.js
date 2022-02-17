@@ -12,6 +12,7 @@ import MapOpenTwo from './src/screens/MapOpenTwo';
 import ZoomImage from './src/screens/ZoomImage';
 import Multisaelect from './src/screens/Multisaelect';
 import MultiSelect from './src/screens/MultiSelect';
+import SocialPage from './src/screens/SocialPage';
 const Stack = createStackNavigator();
 export default class App extends Component {
   constructor(props) {
@@ -33,9 +34,9 @@ export default class App extends Component {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-              name="MultiSelect"
-              component={MultiSelect}
-              options={{title: 'MultiSelect'}}
+              name="SocialPage"
+              component={SocialPage}
+              options={{title: 'SocialPage'}}
             />
             <Stack.Screen name="ChartScreen" component={ChartScreenContainer} />
           </Stack.Navigator>
