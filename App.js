@@ -6,6 +6,12 @@ import ChartScreenContainer from './src/containers/ChartScreenContainer';
 import AllBillsConatiner from './src/containers/AllBillsConatiner';
 import configureStore from './configStore';
 import {Provider} from 'react-redux';
+import MyMap from './src/screens/MyMap';
+import OpenMapAA from './src/screens/OpenMapAA';
+import MapOpenTwo from './src/screens/MapOpenTwo';
+import ZoomImage from './src/screens/ZoomImage';
+import Multisaelect from './src/screens/Multisaelect';
+import MultiSelect from './src/screens/MultiSelect';
 const Stack = createStackNavigator();
 export default class App extends Component {
   constructor(props) {
@@ -27,9 +33,9 @@ export default class App extends Component {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-              name="AllBillsList"
-              component={AllBillsConatiner}
-              options={{title: 'AllBillsList'}}
+              name="MultiSelect"
+              component={MultiSelect}
+              options={{title: 'MultiSelect'}}
             />
             <Stack.Screen name="ChartScreen" component={ChartScreenContainer} />
           </Stack.Navigator>
