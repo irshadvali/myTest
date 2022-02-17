@@ -34,9 +34,9 @@ export default class App extends Component {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-              name="SocialPage"
-              component={SocialPage}
-              options={{title: 'SocialPage'}}
+              name="MultiSelect"
+              component={MultiSelect}
+              options={{title: 'MultiSelect'}}
             />
             <Stack.Screen name="ChartScreen" component={ChartScreenContainer} />
           </Stack.Navigator>

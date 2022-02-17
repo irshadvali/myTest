@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -6,9 +6,10 @@ import {
   FlatList,
   Switch,
   SafeAreaView,
-  CheckBox
+  CheckBox,
+  Button,
 } from 'react-native';
-
+import ModalComponent from './customComponent/ModalComponent';
 // eslint-disable-next-line no-undef
 export default function MultiSelect(props) {
   const [data, setData] = useState([
@@ -21,8 +22,19 @@ export default function MultiSelect(props) {
     {label: 'carbon dioxide', id: 107},
     {label: 'air pollution', id: 108},
   ]);
-
+  const [modalVisible, setModalVisible] = useState(false);
   const [count, setCount] = useState(0);
+  const [selectedData, setSelectedData] = useState([]);
+  const closeThisModal = () => {
+    setModalVisible(!modalVisible);
+  };
+
+  const deleteItemNow = (id) => {
+    let myData = [...data].filter((value) => value.id === id);
+    myData[0].selected = false;
+    setSelectedData([...data].filter((value) => value.selected));
+  };
+
   /*Update Switch State*/
   const onUpdateValue = (index, id) => {
     console.log(id, '==ww=====', index);
@@ -32,6 +44,7 @@ export default function MultiSelect(props) {
       '=========',
       [...data].filter((value) => value.selected),
     );
+    setSelectedData([...data].filter((value) => value.selected));
     setCount(count1);
     return setData([...data]);
   };
@@ -53,6 +66,19 @@ export default function MultiSelect(props) {
         keyExtractor={(item) => item.id}
       />
       <Text>{'selected=' + count + '/' + data.length}</Text>
+
+      <Button
+        title={'next'}
+        onPress={() => {
+          setModalVisible(!modalVisible);
+        }}
+      />
+      <ModalComponent
+        isVisible={modalVisible}
+        closeModal={closeThisModal}
+        dataList={selectedData}
+        deleteItem={deleteItemNow}
+      />
     </SafeAreaView>
   );
 };
