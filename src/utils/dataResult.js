@@ -79,4 +79,14 @@ export const dataResult = {
       date: '12-14-2021',
     },
   ],
+  checkBoxData: [
+    {label: 'temperature', id: 101},
+    {label: 'humidity', id: 102},
+    {label: 'light', id: 103},
+    {label: 'light', id: 104},
+    {label: 'move', id: 105},
+    {label: 'sound', id: 106},
+    {label: 'carbon dioxide', id: 107},
+    {label: 'air pollution', id: 108},
+  ],
 };

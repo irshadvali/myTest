@@ -15,6 +15,7 @@ import MultiSelect from './src/screens/MultiSelect';
 import SocialPage from './src/screens/SocialPage';
 import HooksReducerTest from './src/screens/HooksReducerTest';
 import HooksReducerNextPage from './src/screens/HooksReducerNextPage';
+import MultiSelectReducer from './src/screens/reducerexample/MultiSelectReducer';
 const Stack = createStackNavigator();
 export default class App extends Component {
   constructor(props) {
@@ -36,9 +37,9 @@ export default class App extends Component {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-              name="HooksReducerTest"
-              component={HooksReducerTest}
-              options={{title: 'HooksReducerTest'}}
+              name="MultiSelectReducer"
+              component={MultiSelectReducer}
+              options={{title: 'MultiSelectReducer'}}
             />
             <Stack.Screen name="ChartScreen" component={ChartScreenContainer} />
             <Stack.Screen name="HooksReducerNextPage" component={HooksReducerNextPage} />
