@@ -13,6 +13,8 @@ import ZoomImage from './src/screens/ZoomImage';
 import Multisaelect from './src/screens/Multisaelect';
 import MultiSelect from './src/screens/MultiSelect';
 import SocialPage from './src/screens/SocialPage';
+import HooksReducerTest from './src/screens/HooksReducerTest';
+import HooksReducerNextPage from './src/screens/HooksReducerNextPage';
 const Stack = createStackNavigator();
 export default class App extends Component {
   constructor(props) {
@@ -34,11 +36,12 @@ export default class App extends Component {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-              name="MultiSelect"
-              component={MultiSelect}
-              options={{title: 'MultiSelect'}}
+              name="HooksReducerTest"
+              component={HooksReducerTest}
+              options={{title: 'HooksReducerTest'}}
             />
             <Stack.Screen name="ChartScreen" component={ChartScreenContainer} />
+            <Stack.Screen name="HooksReducerNextPage" component={HooksReducerNextPage} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

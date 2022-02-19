@@ -33,6 +33,7 @@ export default function MultiSelect(props) {
     let myData = [...data].filter((value) => value.id === id);
     myData[0].selected = false;
     setSelectedData([...data].filter((value) => value.selected));
+    setCount([...data].filter((value) => value.selected).length);
   };
 
   /*Update Switch State*/
