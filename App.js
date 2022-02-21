@@ -18,6 +18,7 @@ import HooksReducerNextPage from './src/screens/HooksReducerNextPage';
 import MultiSelectReducer from './src/screens/reducerexample/MultiSelectReducer';
 import MainScreen from './src/screens/usereducer/MainScreen';
 import SecondPage from './src/screens/usereducer/SecondPage';
+import UseRefExample from './src/screens/userefexample/UseRefExample';
 const Stack = createStackNavigator();
 export default class App extends Component {
   constructor(props) {
@@ -39,9 +40,9 @@ export default class App extends Component {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-              name="MainScreen"
-              component={MainScreen}
-              options={{title: 'MainScreen'}}
+              name="UseRefExample"
+              component={UseRefExample}
+              options={{title: 'UseRefExample'}}
             />
             <Stack.Screen name="ChartScreen" component={ChartScreenContainer} />
             <Stack.Screen
