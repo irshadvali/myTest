@@ -19,6 +19,7 @@ import MultiSelectReducer from './src/screens/reducerexample/MultiSelectReducer'
 import MainScreen from './src/screens/usereducer/MainScreen';
 import SecondPage from './src/screens/usereducer/SecondPage';
 import UseRefExample from './src/screens/userefexample/UseRefExample';
+import HomePage from './src/screens/HomePage';
 const Stack = createStackNavigator();
 export default class App extends Component {
   constructor(props) {
@@ -39,6 +40,66 @@ export default class App extends Component {
       <Provider store={this.state.store}>
         <NavigationContainer>
           <Stack.Navigator>
+            <Stack.Screen
+              name="HomePage"
+              component={HomePage}
+              options={{title: 'HomePage'}}
+            />
+            <Stack.Screen
+              name="AllBillsConatiner"
+              component={AllBillsConatiner}
+              options={{title: 'AllBillsConatiner'}}
+            />
+            <Stack.Screen
+              name="MyMap"
+              component={MyMap}
+              options={{title: 'MyMap'}}
+            />
+            <Stack.Screen
+              name="MapOpenTwo"
+              component={MapOpenTwo}
+              options={{title: 'MapOpenTwo'}}
+            />
+            <Stack.Screen
+              name="OpenMapAA"
+              component={OpenMapAA}
+              options={{title: 'OpenMapAA'}}
+            />
+            <Stack.Screen
+              name="ZoomImage"
+              component={ZoomImage}
+              options={{title: 'ZoomImage'}}
+            />
+            <Stack.Screen
+              name="Multisaelect"
+              component={Multisaelect}
+              options={{title: 'Multisaelect'}}
+            />
+            <Stack.Screen
+              name="MultiSelect"
+              component={MultiSelect}
+              options={{title: 'MultiSelect'}}
+            />
+            <Stack.Screen
+              name="SocialPage"
+              component={SocialPage}
+              options={{title: 'SocialPage'}}
+            />
+            <Stack.Screen
+              name="HooksReducerTest"
+              component={HooksReducerTest}
+              options={{title: 'HooksReducerTest'}}
+            />
+            <Stack.Screen
+              name="MultiSelectReducer"
+              component={MultiSelectReducer}
+              options={{title: 'MultiSelectReducer'}}
+            />
+            <Stack.Screen
+              name="MainScreen"
+              component={MainScreen}
+              options={{title: 'MainScreen'}}
+            />
             <Stack.Screen
               name="UseRefExample"
               component={UseRefExample}

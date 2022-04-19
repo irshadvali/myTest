@@ -27,9 +27,9 @@ class Home extends Component {
   }
   render() {
     return (
-      <View>
+      <View
         source={{uri: this.state?.data?.pagemap?.cse_thumbnail[0]?.src}}
-        style={styles.ImageStyle} />
+        style={styles.ImageStyle}>
         <Text style={styles.textStyle}> {this.state.data.title}</Text>
         <Text style={styles.textSpinet}> {this.state.data.snippet}</Text>
       </View>
